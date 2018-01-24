@@ -12,7 +12,6 @@ public class Tote {
 
         //initialization
         Scanner input = new Scanner(System.in);
-
         int[] chosenNumbers = new int[6];
         int i = 0;
         boolean isWorking;
@@ -20,11 +19,28 @@ public class Tote {
         int firstMatches = 0;
         int secondMatches = 0;
         int thirdMatches = 0;
-        //input the chosen numbers
+        String[] inputData = new String[6];
+        String regex = "^[0-9]+$";
         System.out.println("Input 6 numbers [1, 49]: ");
+        /*for (i = 0; i < 6; i++) {
+            inputData[i] = input.nextLine();
+
+            System.out.println("Correct input. Input next number: ");
+        }*/
+
+        //input the chosen numbers
+
         for (i = 0; i < chosenNumbers.length; i++) {
             do {
-                chosenNumbers[i] = input.nextInt();
+                inputData[i] = input.nextLine();
+                while (!inputData[i].matches(regex)) {
+                    System.out.println("Wrong input! Input a correct number[1, 49]: ");
+                    inputData[i].matches(regex);
+                    inputData[i] = input.nextLine();
+                }
+
+                chosenNumbers[i] = Integer.valueOf(inputData[i]);
+
                 isWorking = false;
                 isWrong = false;
                 if (chosenNumbers[i] < 1 || chosenNumbers[i] > 49) {
@@ -39,9 +55,9 @@ public class Tote {
                 }
 
                 if (isWrong) {
-                    System.out.println("Wrong number. Input correct number: ");
+                    System.out.println("Wrong input. Input a correct number[1, 49]: ");
                 } else if (isWrong == false && i < 5) {
-                    System.out.println("Correct input. Input next number: ");
+                    System.out.println("Correct input. Input " + (5 - i) + " more number/s: ");
                 }
             }
             while (isWorking);
