@@ -8,7 +8,7 @@ public class Tote {
         //showing the big jackpot
         int jackpotMoney = 1;
         int generatedJackpot = jackpot(jackpotMoney);
-        System.out.println("The big jackpot is " + generatedJackpot + " levas");
+        System.out.println("The big jackpot is " + generatedJackpot + " leva");
 
         //initialization
         Scanner input = new Scanner(System.in);
@@ -23,12 +23,12 @@ public class Tote {
         String regex = "^[0-9]+$";
 
         //input the chosen numbers
-        System.out.println("Input 6 numbers [1, 49]: ");
+        System.out.print("Input 6 numbers [1, 49]: ");
         for (i = 0; i < 6; i++) {
             do {
                 inputData[i] = input.nextLine();//inputting from the console
                 while (!inputData[i].matches(regex)) {//letters defence
-                    System.out.println("Wrong input! Input a correct number[1, 49]: ");//message for wrong input
+                    System.out.print("Wrong input! \nInput a correct number[1, 49]: ");//message for wrong input
                     inputData[i].matches(regex);
                     inputData[i] = input.nextLine();
                 }
@@ -49,9 +49,9 @@ public class Tote {
                 }
 
                 if (isWrong) {//message for correct or wrong input
-                    System.out.println("Wrong input. Input a correct number[1, 49]: ");
+                    System.out.print("Wrong input. \nInput a correct number[1, 49]: ");
                 } else if (!isWrong && i < 5) {
-                    System.out.println("Correct input. Input " + (5 - i) + " more number/s: ");
+                    System.out.print("Correct input. \nInput " + (5 - i) + " more number/s: ");
                 }
             }
             while (isWorking);
